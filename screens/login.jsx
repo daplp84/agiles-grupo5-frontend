@@ -2,15 +2,13 @@ import React from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Image, TextInput, Header } from 'react-native';
 
-export default function Main() {
+export default function Login() {
   return (
     
     <View style={styles.container}>
      <Image
         style={styles.tinyLogo}
-        source={{
-          uri: 'https://reactnative.dev/img/tiny_logo.png',
-        }}
+        source={require('../images/logo.png')}
       />
       <Text>Bienvendo</Text>
       <TextInput style={styles.input} placeholder="Usuario"></TextInput>
