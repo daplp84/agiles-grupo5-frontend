@@ -1,5 +1,5 @@
 import React from 'react';
-import { SafeAreaView, ScrollView, FlatList } from 'react-native';
+import { SafeAreaView, FlatList } from 'react-native';
 
 const GenericList = (props) => {
     return (

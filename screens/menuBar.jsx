@@ -11,7 +11,7 @@ const MenuBar = (props) => {
     const navigation = useNavigation();
     const { currentBar, setCurrentBar, products } = useContext(BarContext);
     useEffect(() => {
-        //props.barId
+        console.log(props.bar);
         setCurrentBar("1");
     }, []);
 
@@ -23,7 +23,6 @@ const MenuBar = (props) => {
 
     return (
         <View style={styles.container}>
-            <View style={styles.container2}><Text>...</Text></View>
             <View style={styles.filterContainer}>
                 <ProductFilter />
             </View>
