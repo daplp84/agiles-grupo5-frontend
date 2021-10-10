@@ -22,7 +22,7 @@ const QuantitySelector = (props) => {
 
     return(
         <View style={styles.container}>
-            <View style={styles.container2}>
+            <View style={styles.controlsContainer}>
                 <View style={styles.labelContainer}>
                     <Text style={styles.label}>Cantidad:</Text>
                 </View>
@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#ffffff',
         padding: 30
     },
-    container2:{
+    controlsContainer:{
         height: 100,
         flexDirection: 'row',
         borderRadius: 10,

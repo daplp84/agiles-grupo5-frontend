@@ -8,14 +8,14 @@ const MenuItem = (props) => {
     const navigation = useNavigation();
     const [quantity, setQuantity] = useState(1);
  
-    const receiveValue = (q) => {
-        setQuantity(q);
+    const receiveValue = (value) => {
+        setQuantity(value);
     }
 
     return(
         <View style={styles.container}>
             <ItemHeader item={props.item}/>
-            <QuantitySelector style={styles.column} value={quantity} onChange={(q) => receiveValue(q)}/>
+            <QuantitySelector style={styles.column} value={quantity} onChange={(value) => receiveValue(value)}/>
             <View style={styles.buttonContainer}><TouchableOpacity style={styles.touchable}><Text style={styles.touchableText}>AGREGAR AL PEDIDO</Text></TouchableOpacity></View>
         </View>
     );
