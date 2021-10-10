@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
         flex: 3,
         paddingTop: 50,
         paddingBottom: 10,
-        alignItems: "center"
+        alignItems: 'center'
     },
     image: {
         width: 150,
@@ -31,11 +31,11 @@ const styles = StyleSheet.create({
     },
     dataContainer:{
         flex: 1,
-        flexDirection: "row",
+        flexDirection: 'row',
     },
     row:{
         flex: 1,
-        alignItems: "center"
+        alignItems: 'center'
     },
     name:{
         fontSize: 20

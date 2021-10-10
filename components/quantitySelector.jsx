@@ -47,7 +47,7 @@ const QuantitySelector = (props) => {
 const styles = StyleSheet.create({
     container:{
         flex: 1,
-        backgroundColor: "#ffffff",
+        backgroundColor: '#ffffff',
         padding: 30
     },
     container2:{
@@ -86,15 +86,15 @@ const styles = StyleSheet.create({
         fontSize: 20
     },
     button: {
-        width: "50%",
+        width: '50%',
         height: 30,
         borderRadius: 3,
-        backgroundColor: "#58ACFA",
+        backgroundColor: '#58ACFA',
         justifyContent: 'center',
         alignItems: 'center'
     },
     buttonText:{
-        color: "#ffffff",
+        color: '#ffffff',
         fontWeight: 'bold'
     }
 });

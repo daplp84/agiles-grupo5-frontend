@@ -23,7 +23,7 @@ const MenuItem = (props) => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        flexDirection: "column"
+        flexDirection: 'column'
     },
     column: {
         flex: 1,
@@ -36,17 +36,17 @@ const styles = StyleSheet.create({
         backgroundColor: '#ffffff'
     },
     touchable:{
-        width: "80%", 
+        width: '80%', 
         height: 50, 
         justifyContent: 'center', 
         borderWidth: 1,
         borderRadius: 5, 
         marginTop: 10, 
-        backgroundColor: "#58ACFA", 
+        backgroundColor: '#58ACFA', 
         alignItems: 'center'
     },
     touchableText:{
-        color: "#ffffff",
+        color: '#ffffff',
         fontWeight: 'bold'
     }
 });
