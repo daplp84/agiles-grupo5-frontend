@@ -17,14 +17,11 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         flexDirection: 'column',
-        borderBottomWidth: 5,
-        borderBottomLeftRadius: 30,
-        borderBottomRightRadius: 30,
-        backgroundColor: '#ffffff',
+        backgroundColor: '#ffffff'
     },
     imageContainer:{
         flex: 3,
-        paddingTop: 30,
+        paddingTop: 50,
         paddingBottom: 10,
         alignItems: "center"
     },
