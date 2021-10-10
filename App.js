@@ -5,8 +5,6 @@ import string from './util/string';
 //screens
 import Login from './screens/login';
 import { StyleSheet, Text, View, Image, TextInput, Header } from 'react-native';
-import {NavigationContainer} from '@react-navigation/native';
-import {createStackNavigator} from '@react-navigation/stack';
 import MenuItem from './screens/menuItem'
 import MenuBar from './screens/menuBar';
 
