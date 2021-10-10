@@ -75,7 +75,7 @@ const styles = StyleSheet.create({
         height: '40%'
     },
     barTitle: {
-        fontSize: '100%',
+        fontSize: 20,
         fontWeight: 'bold'
     },
     barImage: {

@@ -84,7 +84,8 @@ const styles = StyleSheet.create({
     },
     search: {
         flex: 1,
-        paddingTop: 10,
+        paddingBottom: 20,
+        paddingTop: 20,
         alignItems: 'center',
         backgroundColor: 'white'
     },
