@@ -1,5 +1,7 @@
 import React from "react";
 import { StyleSheet, View, Image, Text } from "react-native";
+import categories from '../util/category';
+
 const ItemHeader = (props) => {
     return(
         <View style={styles.container}>
