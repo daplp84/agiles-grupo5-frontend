@@ -29,7 +29,7 @@ const MenuBar = (props) => {
 
     const renderItem = ({ item }) => {
         return (
-            <MenuItem onPress={() => { navigation.navigate("login") }} item={item} ></MenuItem>
+            <MenuItem onPress={() => { navigation.navigate("menuItem") }} item={item} ></MenuItem>
         );
     }
 
