@@ -1,7 +1,6 @@
 import React, { createContext } from 'react';
 import { useState } from 'react';
 import { getBar } from '../service/bar';
-import categories from '../util/category';
 
 const BarContext = createContext();
 
@@ -28,6 +27,13 @@ export const BarContextProvider = (props) => {
    const removeFilter = () => {
       setProducts(bar.products);
    }
+
+   const searchProduct = (searchProduct) => {
+      const filtered = bar.products.filter(item => {
+        return item.name.toLowerCase().includes(searchProduct.toLowerCase());
+      });
+      setProducts(filtered);
+   }
    
    return (
       <BarContext.Provider
@@ -37,6 +43,7 @@ export const BarContextProvider = (props) => {
             products: products,
             setProductsFilter: (categoryId) => setFilteredProducts(categoryId),
             cleanFilter: () => removeFilter(),
+            searchProduct: (value) => searchProduct(value),
          }}
       >
          {props.children}

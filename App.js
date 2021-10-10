@@ -13,11 +13,13 @@ export default function App() {
     <NavigationContainer>
       <Stack.Navigator>
         {/*<Stack.Screen name="balance" component={Balance} options={{}}>
-        </Stack.Screen>*/}
+        </Stack.Screen>*/}  
 
         {/*<Stack.Screen name="menuItem" component={MenuItem} options={{}}>
         </Stack.Screen>*/}
-        <Stack.Screen name={string.SCREEN_BAR.name} component={MenuBar} options={{ title: string.SCREEN_BAR_TITLE.name }} />
+        <Stack.Screen name={string.SCREEN_BAR.name} component={MenuBar} 
+          options={{ title: string.SCREEN_BAR_TITLE.name , headerTitleAlign: 'center' }} />
+
         <Stack.Screen name="login" component={Login} options={{
           title: "BirraYa!", headerTintColor: "#ffffff", headerLeft: props => <LogoTitle {...props} />, headerStyle: {
             backgroundColor: '#000000',

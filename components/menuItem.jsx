@@ -24,7 +24,8 @@ const styles = StyleSheet.create({
         borderBottomColor: 'grey',
         marginBottom: 10,
         padding: 5,
-        flexDirection: "row"
+        flexDirection: "row",
+        backgroundColor: 'white'
     },
     name: {
         fontSize: 20,
