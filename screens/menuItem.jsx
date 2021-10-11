@@ -4,7 +4,8 @@ import { StyleSheet, View, TouchableOpacity, Text } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import ItemHeader from '../components/itemHeader';
 import QuantitySelector from '../components/quantitySelector';
-const MenuItem = (props) => {
+const MenuItem = ({route}) => {
+    const {item} = route.params; 
     const navigation = useNavigation();
     const [quantity, setQuantity] = useState(1);
  
@@ -14,7 +15,7 @@ const MenuItem = (props) => {
 
     return(
         <View style={styles.container}>
-            <ItemHeader item={props.item}/>
+            <ItemHeader item={item}/>
             <QuantitySelector style={styles.column} value={quantity} onChange={(value) => receiveValue(value)}/>
             <View style={styles.buttonContainer}><TouchableOpacity style={styles.touchable}><Text style={styles.touchableText}>AGREGAR AL PEDIDO</Text></TouchableOpacity></View>
         </View>
