@@ -13,7 +13,6 @@ const MenuBar = ({route}) => {
     const { currentBar, setCurrentBar, products } = useContext(BarContext);
     const { bar } = route.params;
     useEffect(() => {
-        //props.barId
         setCurrentBar(bar.id);
         navigation.setOptions({
             headerRight: () => (
