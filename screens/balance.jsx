@@ -5,10 +5,9 @@ import Card from '../components/generic/card';
 import { useNavigation } from '@react-navigation/native';
 
 const Balance = () => {
-    const [ bar, setBar ] = useState({ id: "1" });
     const navigation = useNavigation();
+    const [ bar, setBar ] = useState({ id: "1" });
     const pressHandler = () => navigation.navigate("menuBar", { bar:bar });
-
     return (
         <View style={styles.container}>
             <Card>
@@ -26,7 +25,7 @@ const Balance = () => {
                     </Button>
                 </View>
             </Card>
-            <Button onPress={pressHandler} buttonStyle={styles.qrButtonStyle} textStyle={styles.qrButtonTextStyle} title='Escanear QR'></Button>
+            <Button onPress={ pressHandler } buttonStyle={styles.qrButtonStyle} textStyle={styles.qrButtonTextStyle} title='Escanear QR'></Button>
         </View>
     );
 };
