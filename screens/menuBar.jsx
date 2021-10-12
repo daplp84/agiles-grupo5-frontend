@@ -8,13 +8,13 @@ import MenuItem from '../components/menuItem';
 import ProductFilter from '../components/productFilter';
 import ButtonIcon from '../components/generic/buttonIcon';
 
-const MenuBar = (props) => {
+const MenuBar = ({route}) => {
     const navigation = useNavigation();
     const { currentBar, setCurrentBar, products } = useContext(BarContext);
-
+    const { bar } = route.params;
     useEffect(() => {
         //props.barId
-        setCurrentBar("1");
+        setCurrentBar(bar.id);
         navigation.setOptions({
             headerRight: () => (
                 <ButtonIcon name='shopping-cart' buttonStyle={styles.headerIcon} />
