@@ -1,46 +1,55 @@
 import React, { useState } from 'react';
-import Card from '../components/generic/card';
 import { StyleSheet, Text, View } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
 import Button from '../components/generic/button';
+import Card from '../components/generic/card';
 
-const Balance = (props) => {
-    const navigation = useNavigation();
+const Balance = ( { navigation } ) => {
     const [ bar, setBar ] = useState({ id: "1" });
-    const pressHandler = () => navigation.navigate("menuBar", { bar });
+    const pressHandler = () => navigation.navigate("menuBar", { bar:bar });
 
     return (
-        <View style={styles.buttons}>
-            <Button onPress={pressHandler} buttonStyle={styles.buttonStyle} textStyle={styles.textStyle} title='test'></Button>
+        <View style={styles.container}>
+            <Card>
+                <Text style={styles.balanceText}>$ 4.06</Text>
+                <View style={styles.buttons}>
+                    <Button 
+                        buttonStyle={styles.cardButtonStyle} 
+                        textStyle={styles.buttonsTextStyle} 
+                        title={"Ingresar dinero"}>
+                    </Button>
+                    <Button 
+                        buttonStyle={styles.cardButtonStyle} 
+                        textStyle={styles.buttonsTextStyle} 
+                        title={"Retirar dinero"}>
+                    </Button>
+                </View>
+            </Card>
+            <Button onPress={pressHandler} buttonStyle={styles.qrButtonStyle} textStyle={styles.qrButtonTextStyle} title='Escanear QR'></Button>
         </View>
     );
 };
 
-export default () => {
-    return (
-        <Balance/>
-    );
-};
+export default Balance;
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
         marginBottom: 20,
     },
-    search: {
-        flex: 1,
-        paddingTop: 10,
-        alignItems: 'center',
+    balanceText: {
+        fontWeight: 'bold',
+        fontSize: 20,
+        marginTop: 15,
+        marginBottom: 15,
     },
     buttons: {
-        flex: 1,
         flexDirection: 'row',
         alignItems: 'center',
         alignSelf: 'center',
         alignContent: 'center',
     },
-    buttonStyle: {
-        width: 100,
+    cardButtonStyle: {
+        width: 75,
         margin: 5,
         borderRadius: 10,
         borderWidth: 1,
@@ -48,20 +57,24 @@ const styles = StyleSheet.create({
         paddingVertical: '2%',
         paddingHorizontal: '3%'
     },
-    textStyle: {
-        textAlign: 'center',
-        fontSize: 16,
-        fontWeight: 'bold',
-    },
-    input: {
-        fontWeight: 'bold',
-        fontSize: 15,
-        height: 30,
-        width: '90%',
-        borderWidth: 2,
+    qrButtonStyle:{
+        alignSelf: 'center',
+        position: 'absolute',
+        bottom: 35,
+        width: 90,
+        margin: 5,
         borderRadius: 10,
-        color: '#009688',
-        paddingLeft: 5,
-        borderColor: '#009688',
+        backgroundColor: '#58ACFA', 
+        paddingVertical: '2%',
+        paddingHorizontal: '3%'
+    },
+    qrButtonTextStyle:{
+        textAlign: 'center',
+        fontWeight: 'bold',
+        color: '#ffffff',
+    },
+    buttonsTextStyle: {
+        textAlign: 'center',
+        fontWeight: 'bold',
     }
 });

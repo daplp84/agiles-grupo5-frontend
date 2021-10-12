@@ -13,18 +13,12 @@ const MenuBar = (props) => {
     const { currentBar, setCurrentBar, products } = useContext(BarContext);
 
     useEffect(() => {
-        console.log(props.bar);
         setCurrentBar("1");
         navigation.setOptions({
             headerRight: () => (
                 <ButtonIcon name='shopping-cart' buttonStyle={styles.headerIcon} />
             )
-        });
-        navigation.setOptions({
-            headerLeft: () => (
-                <ButtonIcon name='arrow-left' buttonStyle={styles.headerIcon} />
-            )
-        });
+        })
     }, []);
 
     const renderItem = ({ item }) => {
@@ -35,14 +29,11 @@ const MenuBar = (props) => {
 
     return (
         <View style={styles.container}>
-<<<<<<< HEAD
-=======
             <View style={styles.barContainer}>
                 <Image style={styles.barImage} source={{ uri: currentBar.image }} />
                 <Text style={styles.barTitle}> {currentBar.name} </Text>
                 <Text style={styles.barAddress}> {currentBar.address} </Text>
             </View>
->>>>>>> main
             <View style={styles.filterContainer}>
                 <ProductFilter />
             </View>
@@ -52,6 +43,7 @@ const MenuBar = (props) => {
         </View>
     );
 }
+
 export default () => {
     return (
         <BarContextProvider>
@@ -90,7 +82,6 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
         alignContent: 'center'
     },
-
     headerIcon: {
         margin: 10
     }
