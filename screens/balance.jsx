@@ -2,9 +2,11 @@ import React, { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import Button from '../components/generic/button';
 import Card from '../components/generic/card';
+import { useNavigation } from '@react-navigation/native';
 
-const Balance = ( { navigation } ) => {
+const Balance = () => {
     const [ bar, setBar ] = useState({ id: "1" });
+    const navigation = useNavigation();
     const pressHandler = () => navigation.navigate("menuBar", { bar:bar });
 
     return (
