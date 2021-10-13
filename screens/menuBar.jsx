@@ -8,12 +8,12 @@ import MenuItem from '../components/menuItem';
 import ProductFilter from '../components/productFilter';
 import ButtonIcon from '../components/generic/buttonIcon';
 
-const MenuBar = ({route}) => {
+const MenuBar = (props) => {
     const navigation = useNavigation();
     const { currentBar, setCurrentBar, products } = useContext(BarContext);
-    const { bar } = route.params;
+
     useEffect(() => {
-        setCurrentBar(bar.id);
+        setCurrentBar(props.bar.id);
         navigation.setOptions({
             headerRight: () => (
                 <ButtonIcon name='shopping-cart' buttonStyle={styles.headerIcon} />
@@ -23,7 +23,7 @@ const MenuBar = ({route}) => {
             headerLeft: () => (
                 <ButtonIcon name='arrow-left' buttonStyle={styles.headerIcon} />
             )
-        });
+        })
     }, []);
 
     const renderItem = ({ item }) => {
@@ -48,10 +48,12 @@ const MenuBar = ({route}) => {
         </View>
     );
 }
-export default () => {
+
+export default ( { route } ) => {
+    const { bar } = route.params;
     return (
         <BarContextProvider>
-            <MenuBar />
+            <MenuBar bar={bar} />
         </BarContextProvider>
     );
 };
@@ -86,7 +88,6 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
         alignContent: 'center'
     },
-
     headerIcon: {
         margin: 10
     }

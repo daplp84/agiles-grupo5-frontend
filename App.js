@@ -4,9 +4,10 @@ import { createStackNavigator } from '@react-navigation/stack';
 import string from './util/string';
 //screens
 import Login from './screens/login';
-import { StyleSheet, Text, View, Image, TextInput, Header } from 'react-native';
+import { Image } from 'react-native';
 import MenuItem from './screens/menuItem'
 import MenuBar from './screens/menuBar';
+import Balance from './screens/balance';
 
 export default function App() {
   const Stack = createStackNavigator();
@@ -14,8 +15,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        {/*<Stack.Screen name="balance" component={Balance} options={{}}>
-        </Stack.Screen>*/}
+        <Stack.Screen name="Saldo" component={Balance} />
         <Stack.Screen name={string.SCREEN_BAR.name} component={MenuBar} 
           options={{ title: string.SCREEN_BAR_TITLE.name , headerTitleAlign: 'center' }} />
         <Stack.Screen name="menuItem" component={MenuItem} options={{title:"Agregar al pedido", headerTitleAlign: 'center'}} />
