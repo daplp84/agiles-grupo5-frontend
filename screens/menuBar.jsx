@@ -18,6 +18,11 @@ const MenuBar = (props) => {
             headerRight: () => (
                 <ButtonIcon name='shopping-cart' buttonStyle={styles.headerIcon} />
             )
+        });
+        navigation.setOptions({
+            headerLeft: () => (
+                <ButtonIcon name='arrow-left' buttonStyle={styles.headerIcon} />
+            )
         })
     }, []);
 
