@@ -1,31 +1,43 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import Button from '../components/generic/button';
 import Card from '../components/generic/card';
 import { useNavigation } from '@react-navigation/native';
+import getBalanceById from '../service/balance';
 
 const Balance = () => {
     const navigation = useNavigation();
-    const [ bar, setBar ] = useState({ id: "1" });
-    const pressHandler = () => navigation.navigate("menuBar", { bar:bar });
+    const [bar, setBar] = useState({ id: "1" });
+    const [balanceAmount, setBalanceAmount] = useState("-");
+    const pressHandler = () => navigation.navigate("menuBar", { bar: bar });
+
+    const updateBalance = async () => {
+        const balance = await getBalanceById("1");
+        setBalanceAmount(balance.amount);
+    };
+
+    useEffect(() => {
+        updateBalance();
+    }, []);
+
     return (
         <View style={styles.container}>
             <Card>
-                <Text style={styles.balanceText}>$ 4.06</Text>
+                <Text style={styles.balanceText}>$ {balanceAmount}</Text>
                 <View style={styles.buttons}>
-                    <Button 
-                        buttonStyle={styles.cardButtonStyle} 
-                        textStyle={styles.buttonsTextStyle} 
+                    <Button
+                        buttonStyle={styles.cardButtonStyle}
+                        textStyle={styles.buttonsTextStyle}
                         title={"Ingresar dinero"}>
                     </Button>
-                    <Button 
-                        buttonStyle={styles.cardButtonStyle} 
-                        textStyle={styles.buttonsTextStyle} 
+                    <Button
+                        buttonStyle={styles.cardButtonStyle}
+                        textStyle={styles.buttonsTextStyle}
                         title={"Retirar dinero"}>
                     </Button>
                 </View>
             </Card>
-            <Button onPress={ pressHandler } buttonStyle={styles.qrButtonStyle} textStyle={styles.qrButtonTextStyle} title='Escanear QR'></Button>
+            <Button onPress={pressHandler} buttonStyle={styles.qrButtonStyle} textStyle={styles.qrButtonTextStyle} title='Escanear QR'></Button>
         </View>
     );
 };
@@ -58,18 +70,18 @@ const styles = StyleSheet.create({
         paddingVertical: '2%',
         paddingHorizontal: '3%'
     },
-    qrButtonStyle:{
+    qrButtonStyle: {
         alignSelf: 'center',
         position: 'absolute',
         bottom: 35,
         width: 90,
         margin: 5,
         borderRadius: 10,
-        backgroundColor: '#58ACFA', 
+        backgroundColor: '#58ACFA',
         paddingVertical: '2%',
         paddingHorizontal: '3%'
     },
-    qrButtonTextStyle:{
+    qrButtonTextStyle: {
         textAlign: 'center',
         fontWeight: 'bold',
         color: '#ffffff',
