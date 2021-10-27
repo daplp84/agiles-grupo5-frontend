@@ -17,12 +17,20 @@ export const OrderContextProvider = (props) => {
       setProducts(order.products);
    };
 
+   const changeProductQuantity = (orderProduct, newQuantity) => {
+      index = products.findIndex(item => {
+         item.state === 'Pending' && item.id === orderProduct.id
+      }); 
+      products[index].quantity = newQuantity;
+   }
+
    return (
       <OrderContext.Provider
          value = {{
             currentOrder: order,
             setCurrentOrder: (userId, barId) => setCurrentOrder(userId, barId),
             products: products,
+            changeProductQuantity: (orderProduct, newQuantity) => changeProductQuantity(orderProduct, newQuantity),
         }}>
          {props.children}
       </OrderContext.Provider>

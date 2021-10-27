@@ -1,23 +1,34 @@
-import React from 'react';
+import React, { useEffect, useContext } from 'react';
 import { useState } from 'react';
-import { StyleSheet, View, TouchableOpacity, Text } from 'react-native';
+import { Alert, StyleSheet, View, TouchableOpacity, Text } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import ItemHeader from '../components/itemHeader';
 import QuantitySelector from '../components/quantitySelector';
+import OrderContext from "../contexts/orderContext";
+
 const MenuItem = ({route}) => {
     const {item} = route.params; 
     const navigation = useNavigation();
-    const [quantity, setQuantity] = useState(1);
- 
+    const [quantity, setQuantity] = useState(item.quantity > 0 ? item.quantity : 1);
+    const { changeProductQuantity } = useContext(OrderContext);
+
     const receiveValue = (value) => {
         setQuantity(value);
+    }
+
+    const performAction = () => {
+        if(item.state === "Pending")
+            changeProductQuantity(item, quantity);
+        const bar = {id: "1"};
+        //Temporal para prueba
+        navigation.navigate("menuBar", { bar:bar });
     }
 
     return(
         <View style={styles.container}>
             <ItemHeader item={item}/>
             <QuantitySelector style={styles.column} value={quantity} onChange={(value) => receiveValue(value)}/>
-            <View style={styles.buttonContainer}><TouchableOpacity style={styles.touchable}><Text style={styles.touchableText}>AGREGAR AL PEDIDO</Text></TouchableOpacity></View>
+            <View style={styles.buttonContainer}><TouchableOpacity onPress={performAction} style={styles.touchable}><Text style={styles.touchableText}>AGREGAR AL PEDIDO</Text></TouchableOpacity></View>
         </View>
     );
 }
