@@ -8,8 +8,10 @@ import { Image } from 'react-native';
 import MenuItem from './screens/menuItem'
 import MenuBar from './screens/menuBar';
 import Balance from './screens/balance';
+import Order from './screens/order';
+import { OrderContextProvider } from './contexts/orderContext';
 
-export default function App() {
+const App = () => {
   const Stack = createStackNavigator();
 
   return (
@@ -19,6 +21,7 @@ export default function App() {
         <Stack.Screen name={string.SCREEN_BAR.name} component={MenuBar} 
           options={{ title: string.SCREEN_BAR_TITLE.name , headerTitleAlign: 'center' }} />
         <Stack.Screen name="menuItem" component={MenuItem} options={{title:"Agregar al pedido", headerTitleAlign: 'center'}} />
+        <Stack.Screen name="order" component={Order} options={{title:"Mi Orden", headerTitleAlign: 'center'}}/>
         <Stack.Screen name="login" component={Login} options={{title:"BirraYa!", headerTintColor: "#ffffff", headerLeft: props => <LogoTitle {...props} />, headerStyle: {
             backgroundColor: '#000000',
           }, headerShown:true }}>
@@ -27,6 +30,14 @@ export default function App() {
     </NavigationContainer>
   );
 }
+
+export default () => {
+  return (
+      <OrderContextProvider>
+        <App />
+      </OrderContextProvider>
+  );
+};
 
 function LogoTitle() {
   return (
