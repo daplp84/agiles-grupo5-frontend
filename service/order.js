@@ -21,7 +21,15 @@ export const getOrder = (userId, barId) => {
                 price: 500.00,
                 quantity: 1,
                 category: categories.FOODS,
-                state: 'Ordered'            
+                state: 'Pending'            
+            },
+            {
+                id: '3',
+                name: 'Helado',
+                description: 'Helado 3 sabores',
+                price: 450,
+                category: categories.DESSERTS,
+                state: 'Ordered'
             }
         ]
     };

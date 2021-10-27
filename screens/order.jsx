@@ -1,8 +1,9 @@
 import React, { useEffect, useContext } from 'react';
-import { StyleSheet, Image, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import Button from '../components/generic/button';
 import GList from '../components/generic/genericList';
-import MenuItem from '../components/menuItem';
+import OrderItem from '../components/orderItem';
 import ButtonIcon from '../components/generic/buttonIcon';
 import OrderContext from "../contexts/orderContext";
 
@@ -20,13 +21,47 @@ const Order = (props) => {
 
     const renderItem = ({ item }) => {
         return (
-            <MenuItem onPress={() => { navigation.navigate("menuItem", {item:item}) }} item={item} ></MenuItem>
+            <OrderItem onPress={() => { navigation.navigate("menuItem", {item:item}) }} item={item} ></OrderItem>
         );
+    }
+
+    const getTotalAmountToPay = (products) => {
+        const filtered = products.filter(product => {
+           return product.state !== 'Pending';
+        });
+
+        return totalPrice(filtered);
+    }
+
+    const getTotalAmountToAdd = (products) => {
+        const filtered = products.filter(product => {
+           return product.state === 'Pending';
+        });
+
+        return totalPrice(filtered);
+    }
+
+    const totalPrice = (products) => {
+        return products.reduce((total, product) => {
+            return total + product.price
+        }, 0);
     }
 
     return (
         <View>
             <GList data={products} item={renderItem}/>
+            <View style={styles.buttonsContainer}>
+                <Button 
+                    buttonStyle={styles.buttonStyle} 
+                    textStyle={styles.buttonsTextStyle} 
+                    title={ "Pedir $" + getTotalAmountToAdd(products) }>
+                </Button>
+                <Button 
+                    buttonStyle={styles.buttonStyle} 
+                    textStyle={styles.buttonsTextStyle} 
+                    title={ "Pagar $" + getTotalAmountToPay(products) }>
+                </Button>
+            </View>
         </View>
     );
 }
@@ -39,34 +74,24 @@ export default ( { route } ) => {
 };
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-    },
-    filterContainer: {
-        height: 150
-    },
-    menuListContainer: {
-        flex: 6,
-    },
-    barContainer: {
-        alignItems: 'center',
+    buttonsContainer: {
+        flexDirection: 'row',
         alignSelf: 'center',
-        alignContent: 'center',
-        width: '100%',
-        height: '40%'
+        justifyContent: 'flex-end',
     },
-    barTitle: {
+    buttonsTextStyle: {
+        textAlign: 'center',
+        fontWeight: 'bold',
         fontSize: 20,
-        fontWeight: 'bold'
     },
-    barImage: {
-        width: '50%',
-        height: '80%'
-    },
-    barAddress: {
-        alignItems: 'center',
-        alignSelf: 'center',
-        alignContent: 'center'
+    buttonStyle: {
+        margin: 5,
+        backgroundColor: '#FFFFFF',
+        borderRadius: 10,
+        borderWidth: 1,
+        borderColor: '#000',
+        paddingVertical: '2%',
+        paddingHorizontal: '3%'
     },
     headerIcon: {
         margin: 10
