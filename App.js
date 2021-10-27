@@ -10,6 +10,7 @@ import MenuBar from './screens/menuBar';
 import Balance from './screens/balance';
 import Order from './screens/order';
 import { OrderContextProvider } from './contexts/orderContext';
+import { BarContextProvider } from './contexts/barContext';
 
 const App = () => {
   const Stack = createStackNavigator();
@@ -33,9 +34,11 @@ const App = () => {
 
 export default () => {
   return (
+    <BarContextProvider>
       <OrderContextProvider>
         <App />
       </OrderContextProvider>
+    </BarContextProvider>
   );
 };
 

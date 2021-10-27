@@ -4,6 +4,7 @@ import { StyleSheet, View, TouchableOpacity, Text } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import ItemHeader from '../components/itemHeader';
 import QuantitySelector from '../components/quantitySelector';
+
 const MenuItem = ({route}) => {
     const {item} = route.params; 
     const navigation = useNavigation();
@@ -21,6 +22,7 @@ const MenuItem = ({route}) => {
         </View>
     );
 }
+
 const styles = StyleSheet.create({
     container: {
         flex: 1,
@@ -51,4 +53,5 @@ const styles = StyleSheet.create({
         fontWeight: 'bold'
     }
 });
+
 export default MenuItem;

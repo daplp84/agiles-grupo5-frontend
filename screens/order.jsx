@@ -5,23 +5,25 @@ import Button from '../components/generic/button';
 import GList from '../components/generic/genericList';
 import OrderItem from '../components/orderItem';
 import ButtonIcon from '../components/generic/buttonIcon';
+import BarContext from "../contexts/barContext";
 import OrderContext from "../contexts/orderContext";
 
 const Order = (props) => {
     const navigation = useNavigation();
     const { products } = useContext(OrderContext);
+    const { bar } = useContext(BarContext);
 
     useEffect(() => {
         navigation.setOptions({
             headerLeft: () => (
-                <ButtonIcon name='arrow-left' buttonStyle={styles.headerIcon} onPress={ () => navigation.navigate("menuBar") } />
+                <ButtonIcon name='arrow-left' buttonStyle={styles.headerIcon} onPress={ () => navigation.navigate("menuBar", { bar:bar }) } />
             )
         })
     }, []);
 
     const renderItem = ({ item }) => {
         return (
-            <OrderItem onPress={() => { navigation.navigate("menuItem", {item:item}) }} item={item} ></OrderItem>
+            <OrderItem item={item} ></OrderItem>
         );
     }
 
@@ -67,9 +69,9 @@ const Order = (props) => {
 }
 
 export default ( { route } ) => {
-    const { order } = route.params;
+    const { order, bar } = route.params;
     return (
-        <Order order={order} />
+        <Order order={order} bar={bar} />
     );
 };
 

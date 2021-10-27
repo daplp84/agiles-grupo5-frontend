@@ -55,9 +55,7 @@ const MenuBar = (props) => {
 export default ( { route } ) => {
     const { bar } = route.params;
     return (
-        <BarContextProvider>
-            <MenuBar bar={bar} />
-        </BarContextProvider>
+        <MenuBar bar={bar} />
     );
 };
 

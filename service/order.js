@@ -28,6 +28,7 @@ export const getOrder = (userId, barId) => {
                 name: 'Helado',
                 description: 'Helado 3 sabores',
                 price: 450,
+                quantity: 1,
                 category: categories.DESSERTS,
                 state: 'Ordered'
             }
