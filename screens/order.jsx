@@ -8,7 +8,7 @@ import ButtonIcon from '../components/generic/buttonIcon';
 import BarContext from "../contexts/barContext";
 import OrderContext from "../contexts/orderContext";
 
-const Order = (props) => {
+const Order = () => {
     const navigation = useNavigation();
     const { products } = useContext(OrderContext);
     const { bar } = useContext(BarContext);
@@ -68,10 +68,9 @@ const Order = (props) => {
     );
 }
 
-export default ( { route } ) => {
-    const { order, bar } = route.params;
+export default () => {
     return (
-        <Order order={order} bar={bar} />
+        <Order/>
     );
 };
 

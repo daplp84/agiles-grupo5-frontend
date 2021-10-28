@@ -1,13 +1,22 @@
-import React, { useState } from 'react';
+import React, { useEffect, useContext } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import Button from '../components/generic/button';
 import Card from '../components/generic/card';
 import { useNavigation } from '@react-navigation/native';
+import BarContext from '../contexts/barContext';
+import OrderContext from '../contexts/orderContext';
 
 const Balance = () => {
     const navigation = useNavigation();
-    const [ bar, setBar ] = useState({ id: "1" });
-    const pressHandler = () => navigation.navigate("menuBar", { bar:bar });
+    const { setCurrentOrder } = useContext(OrderContext);
+    const { setCurrentBar } = useContext(BarContext);
+    const pressHandler = () => navigation.navigate("menuBar");
+
+    useEffect(() => {
+        setCurrentBar("1");
+        setCurrentOrder("1", "1");
+    }, []);
+
     return (
         <View style={styles.container}>
             <Card>
