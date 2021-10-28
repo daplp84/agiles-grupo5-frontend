@@ -9,19 +9,27 @@ import OrderContext from "../contexts/orderContext";
 const MenuItem = ({route}) => {
     const {item} = route.params; 
     const navigation = useNavigation();
-    const [quantity, setQuantity] = useState(item.quantity > 0 ? item.quantity : 1);
-    const { changeProductQuantity } = useContext(OrderContext);
+    
+    const [quantity, setQuantity] = useState(item.quantity || 1);
+    const { changeProductQuantity, currentOrder, addProduct } = useContext(OrderContext);
+    
 
     const receiveValue = (value) => {
+        console.log("me ejecuto");
         setQuantity(value);
     }
 
     const performAction = () => {
-        if(item.state === "Pending")
+        
+        if(item.state === "Pending"){
             changeProductQuantity(item, quantity);
-        const bar = {id: "1"};
-        //Temporal para prueba
-        navigation.navigate("menuBar", { bar:bar });
+            navigation.navigate("order", { order: currentOrder});
+        }else if(item.state === undefined) {
+            addProduct(item, quantity);
+            navigation.navigate("order", { order: currentOrder});
+        }else{
+            Alert.alert("No se puede editar","El producto seleccionado ya no admite cambios.");
+        }
     }
 
     return(
