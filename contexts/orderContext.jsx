@@ -10,7 +10,7 @@ export const OrderContextProvider = (props) => {
 
    const [order, setOrder] = useState({});
    const [products, setProducts] = useState([]);
-   const [currentProduct, setCurrenProduct] = useState({});
+   
 
    const setCurrentOrder = (userId, barId) => {
       const order = getOrder(userId, barId);
@@ -22,18 +22,8 @@ export const OrderContextProvider = (props) => {
       const index = products.findIndex(item => item.id === orderProduct.id && item.state === 'Pending'); 
       products[index].quantity = newQuantity;
    }
-
-   const addProduct = (product, newQuantity) => {
-      const jquantity = {quantity: newQuantity, state: 'Pending'};
-      const orderProduct = {...product, ...jquantity};
-      products.push(orderProduct);
-   }
    
-   const setProduct = (product) => {
-      const filtered = products.filter(item => { item.state === 'Pending'}).filter(item => { item.id === product.id});
-      setCurrenProduct(filtered === undefined ? product : filtered);
-   }
-
+   
    return (
       <OrderContext.Provider
          value = {{

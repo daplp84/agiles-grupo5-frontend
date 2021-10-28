@@ -15,7 +15,6 @@ const MenuItem = ({route}) => {
     
 
     const receiveValue = (value) => {
-        console.log("me ejecuto");
         setQuantity(value);
     }
 
@@ -23,13 +22,13 @@ const MenuItem = ({route}) => {
         
         if(item.state === "Pending"){
             changeProductQuantity(item, quantity);
-            navigation.navigate("order", { order: currentOrder});
-        }else if(item.state === undefined) {
-            addProduct(item, quantity);
-            navigation.navigate("order", { order: currentOrder});
-        }else{
-            Alert.alert("No se puede editar","El producto seleccionado ya no admite cambios.");
+            const bar = {id: '1'};
+            navigation.navigate("menuBar", {bar: bar});
         }
+        
+
+        const bar = {id: '1'};
+            navigation.navigate("menuBar", {bar: bar});
     }
 
     return(

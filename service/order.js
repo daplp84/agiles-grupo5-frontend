@@ -13,7 +13,7 @@ export const getOrder = (userId, barId) => {
                 price: 300.65,
                 quantity: 2,
                 category: categories.DRINKS,
-                state: 'Delivered'
+                state: 'Pending'
             },
             {
                 id: '2',
@@ -28,8 +28,9 @@ export const getOrder = (userId, barId) => {
                 name: 'Helado',
                 description: 'Helado 3 sabores',
                 price: 450,
+                quantity: 3,
                 category: categories.DESSERTS,
-                state: 'Ordered'
+                state: 'Pending'
             }
         ]
     };
