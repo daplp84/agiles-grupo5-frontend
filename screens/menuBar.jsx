@@ -1,22 +1,22 @@
 import React, { useEffect, useContext } from 'react';
 import { StyleSheet, Image, Text, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { BarContextProvider } from '../contexts/barContext';
 import BarContext from '../contexts/barContext';
+import OrderContext from '../contexts/orderContext';
 import GList from '../components/generic/genericList';
 import MenuItem from '../components/menuItem';
 import ProductFilter from '../components/productFilter';
 import ButtonIcon from '../components/generic/buttonIcon';
 
-const MenuBar = (props) => {
+const MenuBar = () => {
     const navigation = useNavigation();
-    const { currentBar, setCurrentBar, products } = useContext(BarContext);
+    const { currentBar, products } = useContext(BarContext);
+    const { currentOrder, } = useContext(OrderContext);
 
     useEffect(() => {
-        setCurrentBar(props.bar.id);
         navigation.setOptions({
             headerRight: () => (
-                <ButtonIcon name='shopping-cart' buttonStyle={styles.headerIcon} />
+                <ButtonIcon name='shopping-cart' buttonStyle={styles.headerIcon} onPress={ () => navigation.navigate("order", { order: currentOrder}) }/>
             )
         });
         navigation.setOptions({
@@ -49,12 +49,9 @@ const MenuBar = (props) => {
     );
 }
 
-export default ( { route } ) => {
-    const { bar } = route.params;
+export default () => {
     return (
-        <BarContextProvider>
-            <MenuBar bar={bar} />
-        </BarContextProvider>
+        <MenuBar />
     );
 };
 
