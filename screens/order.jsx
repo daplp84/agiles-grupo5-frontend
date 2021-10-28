@@ -27,7 +27,7 @@ const Order = () => {
         );
     }
 
-    const getTotalAmountToPay = (products) => {
+    const getTotalAmountToPay = () => {
         const filtered = products.filter(product => {
            return product.state !== 'Pending';
         });
@@ -35,7 +35,7 @@ const Order = () => {
         return totalPrice(filtered);
     }
 
-    const getTotalAmountToAdd = (products) => {
+    const getTotalAmountToAdd = () => {
         const filtered = products.filter(product => {
            return product.state === 'Pending';
         });
