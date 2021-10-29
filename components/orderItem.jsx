@@ -1,11 +1,25 @@
 import React from 'react';
-import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
+import { useContext } from 'react';
+import { StyleSheet, View, Text, TouchableOpacity} from 'react-native';
+import ButtonIcon from './generic/buttonIcon';
+import OrderContext from '../contexts/orderContext';
+import { useNavigation } from '@react-navigation/native';
 
 const OrderItem = (props) => {
+    const { products } = useContext(OrderContext);
+    const { deleteProduct, setCurrentOrderProduct } = useContext(OrderContext);
+    const navigation = useNavigation();
+   
+    const performDelete = () => {
+        deleteProduct(props.item, products)
+        setCurrentOrderProduct(props.item);
+        navigation.navigate("order");
+    };
+
     return (
         <TouchableOpacity onPress={props.onPress} style={styles.container}>
             <View style={styles.column}>
-                <Text style={styles.name}>{props.item.name}</Text>
+                <Text style={styles.name}>{props.item.name} <ButtonIcon name='trash' onPress={() => performDelete (props.item, products)}></ButtonIcon></Text>
                 <Text style={styles.description}>x {props.item.quantity}</Text>
                 <Text style={styles.description}>{props.item.state}</Text>
             </View>

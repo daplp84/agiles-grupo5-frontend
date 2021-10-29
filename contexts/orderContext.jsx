@@ -28,9 +28,13 @@ export const OrderContextProvider = (props) => {
    }
 
    const resetCurrentOrderProduct = () => {
-       
       setCurrentProduct({});
    }
+   
+   const deleteProduct = (product, products) => {
+      const index = products.findIndex(item => item.id === product.id && item.state === 'Pending');
+      products.splice(index, 1)
+   } 
 
    return (
       <OrderContext.Provider
@@ -41,7 +45,8 @@ export const OrderContextProvider = (props) => {
             changeProductQuantity: (orderProduct, newQuantity) => changeProductQuantity(orderProduct, newQuantity),
             currentOrderProduct: currentProduct,
             setCurrentOrderProduct: (product) => setCurrentOrderProduct(product),
-            resetCurrentOrderProduct: () => resetCurrentOrderProduct()
+            resetCurrentOrderProduct: () => resetCurrentOrderProduct(),
+            deleteProduct: (product, products) => deleteProduct(product, products),
         }}>
          {props.children}
       </OrderContext.Provider>
