@@ -45,7 +45,7 @@ const Order = () => {
 
     const totalPrice = (products) => {
         return products.reduce((total, product) => {
-            return total + product.price
+            return total + (product.price * product.quantity)
         }, 0);
     }
 
@@ -56,12 +56,12 @@ const Order = () => {
                 <Button 
                     buttonStyle={styles.buttonStyle} 
                     textStyle={styles.buttonsTextStyle} 
-                    title={ "Pedir $" + getTotalAmountToAdd(products) }>
+                    title={ "Pedir $" + getTotalAmountToAdd(products).toFixed(2) }>
                 </Button>
                 <Button 
                     buttonStyle={styles.buttonStyle} 
                     textStyle={styles.buttonsTextStyle} 
-                    title={ "Pagar $" + getTotalAmountToPay(products) }>
+                    title={ "Pagar $" + getTotalAmountToPay(products).toFixed(2) }>
                 </Button>
             </View>
         </View>
