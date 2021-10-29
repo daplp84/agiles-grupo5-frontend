@@ -26,7 +26,7 @@ const Order = () => {
     const renderItem = ({ item }) => {
         return (
             
-            <OrderItem item={item} onPress={() => { navigation.navigate("menuItem", {item:item}) }}> </OrderItem>
+            <OrderItem item={item} onPress={() => { navigation.navigate("menuItem", {item:item}) }}></OrderItem>
         );
     }
 
@@ -54,11 +54,8 @@ const Order = () => {
 
     return (
         <View>
-            
-            <GList data={products} item={renderItem} />
-            
+            <GList data={products} item={renderItem}/>
             <View style={styles.buttonsContainer}>
-                
                 <Button 
                     buttonStyle={styles.buttonStyle} 
                     textStyle={styles.buttonsTextStyle} 

@@ -6,24 +6,22 @@ import ItemHeader from '../components/itemHeader';
 import QuantitySelector from '../components/quantitySelector';
 import OrderContext from "../contexts/orderContext";
 
-const MenuItem = ({ route }) => {
-    const { item } = route.params;
+const MenuItem = ({route}) => {
+    const {item} = route.params;
     const navigation = useNavigation();
-
     const [quantity, setQuantity] = useState(item.quantity > 0 ? item.quantity : 1);
-
     const { changeProductQuantity, setCurrentOrderProduct, currentOrderProduct, resetCurrentOrderProduct, addProduct } = useContext(OrderContext);
-
+    
     const receiveValue = (value) => {
         setQuantity(value);
     }
 
     useEffect(() => {
         setCurrentOrderProduct(item);
-    }, []);
+    },[]);
 
     const performAction = () => {
-        if (currentOrderProduct.state === "Pending") {
+        if(currentOrderProduct.state === "Pending"){
             changeProductQuantity(item, quantity);
         } else {
             
@@ -36,7 +34,7 @@ const MenuItem = ({ route }) => {
         navigation.navigate("menuBar");
     }
 
-    return (
+    return(
         <View style={styles.container}>
             <ItemHeader item={item} />
             <QuantitySelector style={styles.column} value={quantity} onChange={(value) => receiveValue(value)} />
@@ -58,13 +56,13 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center'
     },
-    buttonContainer: {
+    buttonContainer:{
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
         backgroundColor: '#ffffff'
     },
-    touchable: {
+    touchable:{
         width: '80%',
         height: 50,
         justifyContent: 'center',
@@ -74,7 +72,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#58ACFA',
         alignItems: 'center'
     },
-    touchableText: {
+    touchableText:{
         color: '#ffffff',
         fontWeight: 'bold'
     }

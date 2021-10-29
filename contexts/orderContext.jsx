@@ -19,7 +19,7 @@ export const OrderContextProvider = (props) => {
 
    const changeProductQuantity = (orderProduct, newQuantity) => {
       const index = products.findIndex(item => item.id === orderProduct.id && item.state === 'Pending'); 
-      products[index].quantity = products[index].quantity + newQuantity; // se corrige que sume la cantidad a la que ya tenía.
+      products[index].quantity = newQuantity;
    }
 
    const addProduct = (product, newQuantity) => {

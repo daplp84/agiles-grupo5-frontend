@@ -1,12 +1,11 @@
 import React from 'react';
 import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
 
-
 const OrderItem = (props) => {
     return (
         <TouchableOpacity onPress={props.onPress} style={styles.container}>
             <View style={styles.column}>
-                <Text style={styles.name}>{props.item.name} </Text>
+                <Text style={styles.name}>{props.item.name}</Text>
                 <Text style={styles.description}>x {props.item.quantity}</Text>
                 <Text style={styles.description}>{props.item.state}</Text>
             </View>
