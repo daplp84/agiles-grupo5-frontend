@@ -3,7 +3,7 @@ import { StyleSheet, View, Text, Button, TouchableOpacity } from "react-native";
 import { useState } from "react";
 
 const QuantitySelector = (props) => {
-    const [qty, setQty] = useState(1);
+    const [qty, setQty] = useState(props.value);
     useEffect(() => {
         sendValue();
     })

@@ -23,7 +23,7 @@ const Order = () => {
 
     const renderItem = ({ item }) => {
         return (
-            <OrderItem item={item} ></OrderItem>
+            <OrderItem item={item} onPress={() => { navigation.navigate("menuItem", {item:item}) }}></OrderItem>
         );
     }
 
