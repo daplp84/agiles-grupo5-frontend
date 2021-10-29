@@ -6,7 +6,7 @@ const MenuItem = (props) => {
     return (
         <TouchableOpacity onPress={props.onPress} style={styles.container}>
             <View style={styles.column}>
-                <Text style={styles.name}>{props.item.name}</Text>
+                <Text style={styles.name}>{props.item.name}  </Text>
                 <Text style={styles.description}>{props.item.description}</Text>
                 <Text style={styles.price}>$ {props.item.price}</Text>
             </View>
