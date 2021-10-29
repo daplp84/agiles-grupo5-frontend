@@ -22,6 +22,19 @@ export const OrderContextProvider = (props) => {
       products[index].quantity = newQuantity;
    }
 
+   const addProduct = (product, newQuantity) => {
+
+     
+      product.state = 'Pending';
+      product.quantity = newQuantity;
+
+
+      products.push(product);
+
+
+
+   }
+
    const setCurrentOrderProduct = (product) => {
       const index = products.findIndex(item => item.id === product.id && item.state === 'Pending'); 
       setCurrentProduct(index > -1 ? products[index] : product);
@@ -43,6 +56,7 @@ export const OrderContextProvider = (props) => {
             setCurrentOrder: (userId, barId) => setCurrentOrder(userId, barId),
             products: products,
             changeProductQuantity: (orderProduct, newQuantity) => changeProductQuantity(orderProduct, newQuantity),
+            addProduct: (product, newQuantity) => addProduct(product, newQuantity),
             currentOrderProduct: currentProduct,
             setCurrentOrderProduct: (product) => setCurrentOrderProduct(product),
             resetCurrentOrderProduct: () => resetCurrentOrderProduct(),

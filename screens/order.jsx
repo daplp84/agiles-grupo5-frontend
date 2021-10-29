@@ -8,9 +8,11 @@ import ButtonIcon from '../components/generic/buttonIcon';
 import BarContext from "../contexts/barContext";
 import OrderContext from "../contexts/orderContext";
 
+
+
 const Order = () => {
     const navigation = useNavigation();
-    const { products } = useContext(OrderContext);
+    const { products, setCurrentOrderProduct } = useContext(OrderContext);
     const { bar } = useContext(BarContext);
 
     useEffect(() => {
@@ -23,7 +25,8 @@ const Order = () => {
 
     const renderItem = ({ item }) => {
         return (
-            <OrderItem item={item} onPress={() => { navigation.navigate("menuItem", {item:item}) }}></OrderItem>
+            
+            <OrderItem item={item} onPress={() => { setCurrentOrderProduct(item), navigation.navigate("menuItem", {item:item}) }}></OrderItem>
         );
     }
 
