@@ -10,7 +10,7 @@ const OrderItem = (props) => {
                 <Text style={styles.description}>{props.item.state}</Text>
             </View>
             <View style={styles.priceContainer}>
-                <Text style={styles.price}>$ {props.item.price}</Text>
+                <Text style={styles.price}>$ {(props.item.price * props.item.quantity).toFixed(2)}</Text>
             </View>
         </TouchableOpacity>
     );
