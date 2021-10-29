@@ -11,7 +11,7 @@ import ButtonIcon from '../components/generic/buttonIcon';
 const MenuBar = () => {
     const navigation = useNavigation();
     const { currentBar, products } = useContext(BarContext);
-    const { currentOrder, } = useContext(OrderContext);
+    const { currentOrder, setCurrentOrderProduct } = useContext(OrderContext);
 
     useEffect(() => {
         navigation.setOptions({
@@ -28,7 +28,7 @@ const MenuBar = () => {
 
     const renderItem = ({ item }) => {
         return (
-            <MenuItem onPress={() => { navigation.navigate("menuItem", {item:item}) }} item={item} ></MenuItem>
+            <MenuItem onPress={() => { setCurrentOrderProduct(item); navigation.navigate("menuItem", {item:item}) }} item={item} ></MenuItem>
         );
     }
 

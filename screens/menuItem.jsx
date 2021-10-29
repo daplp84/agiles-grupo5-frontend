@@ -9,8 +9,9 @@ import OrderContext from "../contexts/orderContext";
 const MenuItem = ({route}) => {
     const {item} = route.params;
     const navigation = useNavigation();
-    const [quantity, setQuantity] = useState(item.quantity > 0 ? item.quantity : 1);
     const { changeProductQuantity, setCurrentOrderProduct, currentOrderProduct, resetCurrentOrderProduct, addProduct } = useContext(OrderContext);
+    const [quantity, setQuantity] = useState(currentOrderProduct.quantity > 0 ? currentOrderProduct.quantity : 1);
+    
     
     const receiveValue = (value) => {
         setQuantity(value);
