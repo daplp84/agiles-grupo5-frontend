@@ -9,7 +9,7 @@ const OrderItem = (props) => {
     const { deleteProduct, products} = useContext(OrderContext);
     const navigation = useNavigation();
     const performDelete = () => {
-        deleteProduct(props.item, products)
+        deleteProduct(props.item)
         navigation.push("order");
     };
 
