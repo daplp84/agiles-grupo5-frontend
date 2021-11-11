@@ -31,7 +31,7 @@ const QRScanner = () => {
   
     return(
         <View style={styles.container}>
-            <Camera style={styles.camera} type={type} flashMode={flashMode} onBarCodeScanned={onBarCodeScanned} barCodeScannerSettings={{ barCodeTypes: [BarCodeScanner.Constants.BarCodeType.pdf417]}}>
+            <Camera style={styles.camera} type={type} flashMode={flashMode} onBarCodeScanned={onBarCodeScanned} barCodeScannerSettings={{ barCodeTypes: [BarCodeScanner.Constants.BarCodeType.qr]}}>
 
             </Camera>
         </View>
