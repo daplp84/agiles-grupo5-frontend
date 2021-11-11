@@ -12,7 +12,7 @@ const Balance = () => {
     const { setCurrentOrder } = useContext(OrderContext);
     const { setCurrentBar } = useContext(BarContext);
     const [balanceAmount, setBalanceAmount] = useState("-");
-    const pressHandler = () => navigation.navigate("menuBar");
+    const pressHandler = () => navigation.navigate("qrScanner");
 
     const updateBalance = async () => {
         const balance = await getBalanceById("1");
