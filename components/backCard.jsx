@@ -2,7 +2,7 @@
 import React from 'react';
 import { StyleSheet, View, Text, ImageBackground } from 'react-native';
 
-const FrontCard = (props) => {
+const BackCard = (props) => {
     return (
         <View style={styles.container}>
             <ImageBackground source={require('./../images/card-back.png')} style={styles.image}>
@@ -14,7 +14,7 @@ const FrontCard = (props) => {
     );
 };
 
-export default FrontCard;
+export default BackCard;
 
 const styles = StyleSheet.create({
     container: {
