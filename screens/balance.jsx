@@ -2,17 +2,19 @@ import React, { useEffect, useState, useContext } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import Button from '../components/generic/button';
 import Card from '../components/generic/card';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useFocusEffect } from '@react-navigation/native';
 import BarContext from '../contexts/barContext';
 import OrderContext from '../contexts/orderContext';
 import getBalanceById from '../service/balance';
 
 const Balance = () => {
     const navigation = useNavigation();
-    const { setCurrentOrder } = useContext(OrderContext);
-    const { setCurrentBar } = useContext(BarContext);
+    const { setCurrentOrder, currentOrder } = useContext(OrderContext);
+    const { setCurrentBar, currentBar } = useContext(BarContext);
     const [balanceAmount, setBalanceAmount] = useState("-");
-    const pressHandler = () => navigation.navigate("qrScanner");
+    const pressHandler = () => {
+        currentOrder.state === 'uninitialized' ? navigation.push("qrScanner") : navigation.push("order"); 
+    };
 
     const updateBalance = async () => {
         const balance = await getBalanceById("1");
@@ -21,8 +23,8 @@ const Balance = () => {
 
     useEffect(() => {
         updateBalance();
-        setCurrentBar("1");
-        setCurrentOrder("1", "1");
+        //setCurrentBar("1");
+        //setCurrentOrder("1", "1");
     }, []);
 
     return (
@@ -42,7 +44,7 @@ const Balance = () => {
                     </Button>
                 </View>
             </Card>
-            <Button onPress={pressHandler} buttonStyle={styles.qrButtonStyle} textStyle={styles.qrButtonTextStyle} title='Escanear QR'></Button>
+            <Button onPress={pressHandler} buttonStyle={styles.qrButtonStyle} textStyle={styles.qrButtonTextStyle} title={currentOrder.state === 'uninitialized' ? 'Escanear QR' : 'Ir al pedido'}></Button>
         </View>
     );
 };

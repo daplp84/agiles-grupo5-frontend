@@ -37,7 +37,7 @@ const QRScanner = () => {
             if(qrContent.App == "BirraYa"){
                 const bar = qrContent.BarId;
                 setCurrentBar(bar);
-                setCurrentOrder("1", bar);
+                setCurrentOrder('1', bar);
                 navigation.push("menuBar")
             }else{
                 setScanned(false);
