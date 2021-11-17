@@ -3,10 +3,14 @@ import { TextInput } from 'react-native';
 
 const Input = (props) => {
    return (
-      <TextInput onChangeText={props.onChangeText}
+      <TextInput
+         value={props.value}
+         onChangeText={props.onChangeText}
          placeholder={props.placeholder}
          secureTextEntry={props.secureTextEntry}
          style={props.inputStyle}
+         keyboardType={props.type}
+         maxLength={props.length}
       />
    );
 }

@@ -3,7 +3,7 @@ import axios from 'axios';
 
 const url = "http://localhost:3000/api/balance/";
 
-const getBalanceById = async (balanceId) => {
+export const getBalanceById = async (balanceId) => {
     return await axios({
         method: 'GET',
         url: url.concat(balanceId),
@@ -12,4 +12,6 @@ const getBalanceById = async (balanceId) => {
     });
 }
 
-export default getBalanceById;
+export const updateBalance = async (id, amount) => {
+    await axios.patch(url + id, { amount: parseFloat(amount) }).catch(error => console.log(error));
+}
