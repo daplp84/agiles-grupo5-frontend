@@ -8,9 +8,9 @@ const BackCard = (props) => {
             <ImageBackground source={require('./../images/card-back.png')} style={styles.image}>
                 <View style={styles.fieldContainer}>
                     <Text style={styles.cvv}>{props.cvv}</Text>
-                </View>     
-            </ImageBackground>      
-        </View>  
+                </View>
+            </ImageBackground>
+        </View>
     );
 };
 
@@ -23,8 +23,8 @@ const styles = StyleSheet.create({
     },
     fieldContainer: {
         alignSelf: 'flex-end',
-        marginTop: 110,
-        marginRight: 30,
+        marginRight: '6%',
+        marginTop: '28%'
     },
     cvv: {
         fontSize: 22,
