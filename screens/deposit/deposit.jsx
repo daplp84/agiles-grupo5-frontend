@@ -76,7 +76,7 @@ const Deposit = () => {
         <SafeAreaView style={styles.container}>
             <ScrollView>
                 <CardFlip style={styles.cardContainer} ref={(card) => setCard(card)} duration={1100}>
-                    <TouchableOpacity style={styles.cardStyle} onPress={() => card.flip()} >
+                    <TouchableOpacity style={styles.cardStyle}>
                         <FrontCard
                             cardNumber={cardNumber}
                             fullName={fullName.toUpperCase()}
@@ -117,9 +117,10 @@ const Deposit = () => {
                         onChangeText={(val) => setFullName(val)}
                         inputStyle={styles.field}
                         placeholder="Apellido y Nombre"
+                        length = {19}
                     />
                     <MaskedTextInput
-                        mask="99/9999"
+                        mask="99/99"
                         onChangeText={(text, rawText) => {
                             setExpirationDate(text);
                         }}

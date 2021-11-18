@@ -1,27 +1,24 @@
 import React from 'react';
 import { StyleSheet, View, Text, ImageBackground, Image } from 'react-native';
 
-const FrontCard = (props) => {  
+const FrontCard = (props) => {
+    const image = require('./../images/card-front.png');
     return (
         <View style={styles.container}>
-            <ImageBackground source={require('./../images/card-front.png')} style={styles.image}>
-                <Image
-                    style={styles.logo}
-                    source={{uri: props.icon}}
-                />
-                <View style={styles.fieldContainer}>    
-                    <Text style={styles.cardNumber}>{props.cardNumber} </Text>
+            <ImageBackground source={image} style={styles.image}>
+                <View style={styles.fieldContainer}>
+                    <Text style={styles.cardNumber} >{props.cardNumber} </Text>
                     <View style={styles.fieldRow}>
                         <Text style={styles.nameLabel}>Apellido y Nombre</Text>
-                        <Text style={styles.dateLabel}>Exp. Date</Text>
+                        <Text style={styles.dateLabel}>Vencimiento</Text>
                     </View>
                     <View style={styles.fieldRow}>
                         <Text style={styles.name}>{props.fullName}</Text>
                         <Text style={styles.date}>{props.expDate}</Text>
                     </View>
-                </View>     
-            </ImageBackground>      
-        </View>  
+                </View>
+            </ImageBackground>
+        </View>
     );
 };
 
@@ -37,39 +34,37 @@ const styles = StyleSheet.create({
     fieldRow: {
         flexDirection: 'row',
         flexWrap: "wrap",
-        marginLeft: 30,
+        marginLeft: 20,
     },
     name: {
-        fontSize: 18,
+        fontSize: 15,
         marginTop: 10,
         color: 'white',
         alignSelf: 'flex-start',
-        width: 180,
-    }, 
+        width: '70%',
+    },
     nameLabel: {
-        fontSize: 15,
+        fontSize: 13,
         color: 'gray',
-        width: 180,
+        width: '70%',
         alignSelf: 'flex-start',
-    }, 
+    },
     date: {
-        fontSize: 18,
+        fontSize: 15,
         marginTop: 10,
-        marginLeft: 30,
         color: 'white',
         alignSelf: 'flex-end',
-        width: 100,
-    }, 
+        width: '30%',
+    },
     dateLabel: {
-        fontSize: 15,
-        marginLeft: 30,
+        fontSize: 13,
         alignSelf: 'flex-end',
         color: 'gray',
-        width: 100,
-    }, 
+        width: '30%'
+    },
     cardNumber: {
         marginBottom: 20,
-        marginTop: 10,
+        marginTop: 35,
         fontSize: 25,
         textAlign: 'center',
         color: 'white',
@@ -77,11 +72,5 @@ const styles = StyleSheet.create({
     image: {
         width: '100%',
         height: '100%',
-    },
-    logo: {
-        width: 60,
-        height: 45,
-        alignSelf: 'flex-end',
-        margin: 10,
     }
 });
