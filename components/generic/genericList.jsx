@@ -6,7 +6,7 @@ const GenericList = (props) => {
         <SafeAreaView>
             <FlatList 
                 data={props.data}
-                keyExtractor={item => item.id}
+                keyExtractor={item => item.id.toString()}
                 renderItem={props.item}
             />
         </SafeAreaView>
