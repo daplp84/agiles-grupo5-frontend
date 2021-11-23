@@ -9,6 +9,7 @@ import MenuItem from './screens/menuItem'
 import MenuBar from './screens/menuBar';
 import Balance from './screens/balance';
 import Order from './screens/order';
+import Deposit from './screens/deposit/deposit';
 import { OrderContextProvider } from './contexts/orderContext';
 import { BarContextProvider } from './contexts/barContext';
 import QRScanner from './screens/qrScanner';
@@ -22,6 +23,7 @@ const App = () => {
         <Stack.Screen name="Saldo" component={Balance} />
         <Stack.Screen name={string.SCREEN_BAR.name} component={MenuBar} 
           options={{ title: string.SCREEN_BAR_TITLE.name , headerTitleAlign: 'center' }} />
+        <Stack.Screen name="deposit" component={Deposit} options={{ title: "Depositar" , headerTitleAlign: 'center' }} />
         <Stack.Screen name="menuItem" component={MenuItem} options={{title:"Agregar al pedido", headerTitleAlign: 'center'}} />
         <Stack.Screen name="qrScanner" component={QRScanner} options={{title:"Scannear QR", headerTitleAlign: 'center'}} />
         <Stack.Screen name="order" component={Order} options={{title:"Mi Orden", headerTitleAlign: 'center'}}/>

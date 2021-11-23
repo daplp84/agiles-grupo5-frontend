@@ -5,7 +5,7 @@ import Card from '../components/generic/card';
 import { useNavigation, useFocusEffect } from '@react-navigation/native';
 import BarContext from '../contexts/barContext';
 import OrderContext from '../contexts/orderContext';
-import getBalanceById from '../service/balance';
+import { getBalanceById } from '../service/balance';
 
 const Balance = () => {
     const navigation = useNavigation();
@@ -15,12 +15,19 @@ const Balance = () => {
     const pressHandler = () => {
         currentOrder.state === 'uninitialized' ? navigation.push("qrScanner") : navigation.push("order"); 
     };
+    const deposit = () => navigation.navigate("deposit");
 
     const updateBalance = async () => {
         const balance = await getBalanceById("1");
         setBalanceAmount(balance.amount);
     };
 
+    useFocusEffect(
+        React.useCallback(() => {
+            updateBalance();
+        }, [])
+    );
+    
     useEffect(() => {
         updateBalance();
         //setCurrentBar("1");
@@ -35,7 +42,9 @@ const Balance = () => {
                     <Button
                         buttonStyle={styles.cardButtonStyle}
                         textStyle={styles.buttonsTextStyle}
-                        title={"Ingresar dinero"}>
+                        title={"Ingresar dinero"}
+                        onPress={deposit}
+                        >
                     </Button>
                     <Button
                         buttonStyle={styles.cardButtonStyle}

@@ -12,7 +12,6 @@ const MenuItem = ({route}) => {
     const { changeProductQuantity, setCurrentOrderProduct, currentOrderProduct, resetCurrentOrderProduct, addProduct } = useContext(OrderContext);
     const [quantity, setQuantity] = useState(currentOrderProduct.quantity > 0 ? currentOrderProduct.quantity : 1);
     
-    
     const receiveValue = (value) => {
         setQuantity(value);
     }
@@ -21,6 +20,10 @@ const MenuItem = ({route}) => {
         setCurrentOrderProduct(item);
     },[]);
 
+    const getAmount = () => {
+        return quantity * item.price;
+    }
+
     const performAction = () => {
         if(currentOrderProduct.state === "Pending"){
             changeProductQuantity(item, quantity);
@@ -28,8 +31,6 @@ const MenuItem = ({route}) => {
             
             addProduct(item, quantity);
         }
-
-
 
         resetCurrentOrderProduct();
         navigation.navigate("menuBar");
@@ -41,7 +42,7 @@ const MenuItem = ({route}) => {
             <QuantitySelector style={styles.column} value={quantity} onChange={(value) => receiveValue(value)} />
             <View style={styles.buttonContainer}>
                 <TouchableOpacity onPress={performAction} style={styles.touchable}>
-                    <Text style={styles.touchableText}>AGREGAR AL PEDIDO</Text>
+                    <Text style={styles.touchableText}>Agregar a mi pedido ${getAmount().toFixed(2)}</Text>
                 </TouchableOpacity>
             </View>
         </View>

@@ -9,7 +9,7 @@ const QuantitySelector = (props) => {
     })
 
     const increaseQuantity = () => {
-        setQty(qty+1);
+        setQty(qty < 50 ? qty+1 : 50);
         sendValue();
     }
     const decreaseQuantity = () => {
