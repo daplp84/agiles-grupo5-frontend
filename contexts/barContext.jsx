@@ -11,15 +11,15 @@ export const BarContextProvider = (props) => {
    const [bar, setBar] = useState({});
    const [products, setProducts] = useState([]);
    
-   const setCurrentBar = (barId) => {
-      const bar = getBar(barId);
+   const setCurrentBar = async (barId) => {
+      const bar = await getBar(barId);
       setBar(bar);
       setProducts(bar.products);
    };
 
-   const setFilteredProducts = (category) => {
+   const setFilteredProducts = (category) => {     
       const filtered = bar.products.filter(item => {
-         return item.category === category;
+         return item.category === category.name;
       });
       setProducts(filtered);
    }
