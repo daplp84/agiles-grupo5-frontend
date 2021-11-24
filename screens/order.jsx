@@ -34,7 +34,6 @@ const Order = () => {
         const filtered = products.filter(product => {
            return product.state !== 'Pending';
         });
-
         return totalPrice(filtered);
     }
 
@@ -59,6 +58,8 @@ const Order = () => {
     const alertaPedido = () => {
         alert('Pedido realizado!')
     }
+    
+    
 
     return (
         <View>
@@ -73,10 +74,13 @@ const Order = () => {
                 <Button 
                     buttonStyle={styles.buttonStyle} 
                     textStyle={styles.buttonsTextStyle} 
-                    title={ "Pagar $" + getTotalAmountToPay(products).toFixed(2) }>
+                    title={ "Pagar $" + getTotalAmountToPay(products).toFixed(2) }
+                    onPress={ () => navigation.navigate("tax")}>
                 </Button>
             </View>
+            
         </View>
+        
     );
 }
 
