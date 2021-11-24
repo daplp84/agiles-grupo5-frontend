@@ -21,19 +21,19 @@ const Tax = () => {
     return(
         <View style={styles.buttons}>
         <Button 
-            onPress={() => { navigation.navigate("order")}}
+            onPress={() => { navigation.navigate("ticket")}}
             buttonStyle={styles.buttonStyle} 
             textStyle={styles.textStyle} 
             title={"Sin Propina"}>
         </Button>
         <Button 
-            onPress={() => { navigation.navigate("order")}} 
+            onPress={() => { navigation.navigate("ticker")}} 
             buttonStyle={styles.buttonStyle} 
             textStyle={styles.textStyle} 
             title={"10%"}>
         </Button>
         <Button 
-            onPress={() => { navigation.navigate("order")}} 
+            onPress={() => { navigation.navigate("ticket")}} 
             buttonStyle={styles.buttonStyle}
             textStyle={styles.textStyle} 
             title={"20%"}>

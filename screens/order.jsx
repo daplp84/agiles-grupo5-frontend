@@ -9,7 +9,6 @@ import BarContext from "../contexts/barContext";
 import OrderContext from "../contexts/orderContext";
 
 
-
 const Order = () => {
     const navigation = useNavigation();
     const { products, setCurrentOrderProduct, setStateRequest } = useContext(OrderContext);
