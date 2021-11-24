@@ -12,7 +12,7 @@ import OrderContext from "../contexts/orderContext";
 
 const Order = () => {
     const navigation = useNavigation();
-    const { products, setCurrentOrderProduct } = useContext(OrderContext);
+    const { products, setCurrentOrderProduct, setStateRequest } = useContext(OrderContext);
     const { bar } = useContext(BarContext);
 
     useEffect(() => {
@@ -52,6 +52,14 @@ const Order = () => {
         }, 0);
     }
 
+    const changeStateProducts = () => {
+        setStateRequest();
+        navigation.push("order");
+    }
+    const alertaPedido = () => {
+        alert('Pedido realizado!')
+    }
+
     return (
         <View>
             <GList data={products} item={renderItem}/>
@@ -59,7 +67,8 @@ const Order = () => {
                 <Button 
                     buttonStyle={styles.buttonStyle} 
                     textStyle={styles.buttonsTextStyle} 
-                    title={ "Pedir $" + getTotalAmountToAdd(products).toFixed(2) }>
+                    title={ "Pedir $" + getTotalAmountToAdd(products).toFixed(2) }
+                    onPress={() => {changeStateProducts(), alertaPedido()}}>
                 </Button>
                 <Button 
                     buttonStyle={styles.buttonStyle} 

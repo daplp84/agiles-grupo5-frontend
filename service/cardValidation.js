@@ -1,4 +1,3 @@
-import { isValidElement } from "react";
 
 const validateCard = (cardNumber) => {
     return cardNumber.length == 19;
@@ -7,10 +6,11 @@ const validateCard = (cardNumber) => {
 const validateDate = (date) => {
     let isValid = false;
     const month = parseInt(date.split("/")[0]);
-    const currentMonth = parseInt(new Date().getMonth()+1);
+    const currentMonth = parseInt(new Date().getMonth() + 1);
     const year = parseInt(date.split("/")[1]);
-    const currentYear = parseInt(new Date().getFullYear());
-    if(date.length == 7 && month <= 12 && year>=currentYear){
+    const currentYear = parseInt(new Date().getFullYear()) - 2000;
+    console.log(currentYear + " - " + year);
+    if (date.length == 5 && month <= 12 && year >= currentYear) {
         isValid = (year == currentYear && month < currentMonth) ? false : true;
     }
     return isValid;

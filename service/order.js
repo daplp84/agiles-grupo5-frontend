@@ -1,4 +1,13 @@
 import categories from '../util/category';
+export const createOrder = (userId, barId) => {
+    return {
+        id: '1',
+        userId: '1',
+        barId: barId,
+        state: 'uninitialized',
+        products: []
+    };
+}
 
 export const getOrder = (userId, barId) => {
     return {

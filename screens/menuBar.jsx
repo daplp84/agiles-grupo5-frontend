@@ -21,7 +21,7 @@ const MenuBar = () => {
         });
         navigation.setOptions({
             headerLeft: () => (
-                <ButtonIcon name='arrow-left' buttonStyle={styles.headerIcon} onPress={ () => navigation.navigate("Saldo") } />
+                <ButtonIcon name='arrow-left' buttonStyle={styles.headerIcon} onPress={ () => navigation.push("Saldo") } />
             )
         })
     }, []);

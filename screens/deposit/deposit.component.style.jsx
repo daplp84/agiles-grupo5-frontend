@@ -3,23 +3,23 @@ import { StyleSheet } from 'react-native';
 export default StyleSheet.create({
     container: {
         flex: 1,
-        marginTop:40,
-        alignItems: 'center',
+        width: '90%',
+        alignSelf: 'center'
     },
     cardContainer: {
-        width: 400,
-        height: 250,
+        width: '100%',
+        height: '80%',
     },
     cardStyle: {
         borderRadius: 6,
         borderWidth: 1,
         borderColor: 'gray',
-        width: 400,
-        height: 250,
+        width: '100%',
+        height: '100%',
         padding: 5,
     },
     fieldsContainer: {
-        width: 400,
+        width: '100%',
         height: 250,
         marginTop: 20,
     },
@@ -32,9 +32,9 @@ export default StyleSheet.create({
         padding: 4,
     },
     payButton: {
-        width: 400,
+        width: '100%',
+        height: 40,
         backgroundColor: '#58ACFA',
-        textAlign: 'center',
         borderRadius: 10,
         borderRadius: 4,
         borderWidth: 1,
@@ -43,14 +43,16 @@ export default StyleSheet.create({
         marginTop: 10,
         padding: 4,
     },
-    payTextStyle : {
-        fontSize: 15
+    payTextStyle: {
+        fontSize: 15,
+        textAlign: 'center',
+        textAlignVertical: 'center'
     },
     errorMessage: {
         marginTop: 10,
         color: 'red',
     },
-    successMessage: { 
+    successMessage: {
         marginTop: 10,
         color: 'green',
     }
