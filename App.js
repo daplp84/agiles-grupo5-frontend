@@ -13,6 +13,8 @@ import Deposit from './screens/deposit/deposit';
 import { OrderContextProvider } from './contexts/orderContext';
 import { BarContextProvider } from './contexts/barContext';
 import QRScanner from './screens/qrScanner';
+import Tax from './screens/tax';
+import Ticket from './screens/ticket';
 
 const App = () => {
   const Stack = createStackNavigator();
@@ -27,6 +29,8 @@ const App = () => {
         <Stack.Screen name="menuItem" component={MenuItem} options={{title:"Agregar al pedido", headerTitleAlign: 'center'}} />
         <Stack.Screen name="qrScanner" component={QRScanner} options={{title:"Scannear QR", headerTitleAlign: 'center'}} />
         <Stack.Screen name="order" component={Order} options={{title:"Mi Orden", headerTitleAlign: 'center'}}/>
+        <Stack.Screen name="tax" component={Tax} options={{title:"Mi Propina", headerTitleAlign: 'center'}}/>
+        <Stack.Screen name="ticket" component={Ticket} options={{title:"Ticket", headerTitleAlign: 'center'}}/>
         <Stack.Screen name="login" component={Login} options={{title:"BirraYa!", headerTintColor: "#ffffff", headerLeft: props => <LogoTitle {...props} />, headerStyle: {
             backgroundColor: '#000000',
           }, headerShown:true }}>

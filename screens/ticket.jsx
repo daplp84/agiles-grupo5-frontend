@@ -1,18 +1,20 @@
 import React, { useEffect, useContext } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, Text } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import Button from '../components/generic/button';
 import GList from '../components/generic/genericList';
-import OrderItem from '../components/orderItem';
+import RenderTicket from '../components/renderTicket';
 import ButtonIcon from '../components/generic/buttonIcon';
 import BarContext from "../contexts/barContext";
 import OrderContext from "../contexts/orderContext";
 
 
-const Order = () => {
+
+const Ticket = () => {
     const navigation = useNavigation();
-    const { products, setCurrentOrderProduct, setStateRequest } = useContext(OrderContext);
+    const { products } = useContext(OrderContext);
     const { bar } = useContext(BarContext);
+   
 
     useEffect(() => {
         navigation.setOptions({
@@ -22,71 +24,45 @@ const Order = () => {
         })
     }, []);
 
-    const renderItem = ({ item }) => {
+    const renderTicket = ({ item }) => {
         return (
-            
-            <OrderItem item={item} onPress={() => { setCurrentOrderProduct(item), navigation.navigate("menuItem", {item:item}) }}></OrderItem>
+            <RenderTicket item={item}></RenderTicket>
         );
     }
 
-    const getTotalAmountToPay = () => {
+    const getTotalAmountToTicket = () => {
         const filtered = products.filter(product => {
            return product.state !== 'Pending';
         });
-        return totalPrice(filtered);
+
+        return ticketPrice(filtered);
     }
 
-    const getTotalAmountToAdd = () => {
-        const filtered = products.filter(product => {
-           return product.state === 'Pending';
-        });
-
-        return totalPrice(filtered);
-    }
-
-    const totalPrice = (products) => {
+    const ticketPrice = (products) => {
         return products.reduce((total, product) => {
             return total + (product.price * product.quantity)
         }, 0);
     }
 
-    const changeStateProducts = () => {
-        setStateRequest();
-        navigation.push("order");
-    }
-    const alertaPedido = () => {
-        alert('Pedido realizado!')
-    }
-    
-    
-
     return (
         <View>
-            <GList data={products} item={renderItem}/>
-            <View style={styles.buttonsContainer}>
-                <Button 
+            <GList data={products} item={renderTicket}/>
+            <View>
+                <Text style={styles.touchableText}> Total: ${getTotalAmountToTicket(products).toFixed(2)}</Text>           
+                <Button
                     buttonStyle={styles.buttonStyle} 
                     textStyle={styles.buttonsTextStyle} 
-                    title={ "Pedir $" + getTotalAmountToAdd(products).toFixed(2) }
-                    onPress={() => {changeStateProducts(), alertaPedido()}}>
+                    title={ "Descargar Ticket" }>
                 </Button>
-                <Button 
-                    buttonStyle={styles.buttonStyle} 
-                    textStyle={styles.buttonsTextStyle} 
-                    title={ "Pagar $" + getTotalAmountToPay(products).toFixed(2) }
-                    onPress={ () => navigation.navigate("tax")}>
-                </Button>
-                
             </View>
-            
         </View>
-        
     );
+
 }
 
 export default () => {
     return (
-        <Order/>
+        <Ticket/>
     );
 };
 
@@ -112,5 +88,12 @@ const styles = StyleSheet.create({
     },
     headerIcon: {
         margin: 10
+    },
+    touchableText:{
+        textAlign: 'right',
+        color: 'black',
+        fontWeight: 'bold',
+        fontSize: 25,
+        marginRight:15
     }
 });
