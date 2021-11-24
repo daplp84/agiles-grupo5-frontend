@@ -54,6 +54,10 @@ export const OrderContextProvider = (props) => {
       checkOrderState();
    } 
 
+   const setStateRequest = () => {
+      products.map(item => item.state = 'Requested');
+   }
+
    return (
       <OrderContext.Provider
          value = {{
@@ -66,6 +70,7 @@ export const OrderContextProvider = (props) => {
             setCurrentOrderProduct: (product) => setCurrentOrderProduct(product),
             resetCurrentOrderProduct: () => resetCurrentOrderProduct(),
             deleteProduct: (product) => deleteProduct(product),
+            setStateRequest: (product) => setStateRequest(product),
         }}>
          {props.children}
       </OrderContext.Provider>
